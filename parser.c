@@ -209,7 +209,15 @@ void parse_file ( char * filename,
       draw_lines(edges, s, c);
       save_extension(s, line);
     }//end save
-    
+   
+    else if ( strncmp(line, "clear", strlen(line)) == 0 ) {
+    }
+    else if ( strncmp(line, "box", strlen(line)) == 0 ) {
+    }
+    else if ( strncmp(line, "sphere", strlen(line)) == 0 ) {
+    }
+    else if ( strncmp(line, "torus", strlen(line)) == 0 ) {
+    } 
   }
 }
   
