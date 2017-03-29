@@ -211,12 +211,29 @@ void parse_file ( char * filename,
     }//end save
    
     else if ( strncmp(line, "clear", strlen(line)) == 0 ) {
+      edges->lastcol = 0;
     }
     else if ( strncmp(line, "box", strlen(line)) == 0 ) {
+      fgets(line, sizeof(line), f);
+      double x,y,z,width,depth,height;
+      sscanf(line, "%lf %lf %lf %lf %lf %lf",
+             &x, &y, &z,
+             &width, &height, &depth);
+      add_box(edges,x,y,z,width,height,depth);
     }
     else if ( strncmp(line, "sphere", strlen(line)) == 0 ) {
+      fgets(line, sizeof(line), f);
+      double cx,cy,cz,r;
+      sscanf(line, "%lf %lf %lf %lf",
+             &cx, &cy, &cz, &r);
+      add_sphere(edges,cx,cy,cz,r);
     }
     else if ( strncmp(line, "torus", strlen(line)) == 0 ) {
+      fgets(line, sizeof(line), f);
+      double cx,cy,cz,radius1,radius2;
+      sscanf(line, "%lf %lf %lf %lf %lf",
+             &cx, &cy, &cz, &radius1, &radius2);
+      add_torus(edges,cx,cy,cz,radius1,radius2);
     } 
   }
 }
