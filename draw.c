@@ -53,7 +53,7 @@ void add_box( struct matrix * edges,
 void add_sphere( struct matrix * edges, 
 		 double cx, double cy, double cz,
 		 double r, double step ) {
-  return;
+
 }
 
 /*======== void generate_sphere() ==========
@@ -70,7 +70,20 @@ void add_sphere( struct matrix * edges,
   ====================*/
 struct matrix * generate_sphere(double cx, double cy, double cz,
 				double r, double step ) {
-  return NULL;
+  int count = (int)(1/step);
+  int i,j;
+  struct matrix * points = new_matrix(4,4);
+  struct matrix * rotate;
+  int theta = (360/count);
+  rotate = make_rotY(theta);
+
+  for(i = 0; i<=count, i++){
+    for(j = 0; j<=count; j++){
+      add_circle(points, cx, cy, cz, r, step);
+      matrix_mult(rotate, points);
+    }
+  }
+  return points;
 }
 
 /*======== void add_torus() ==========
